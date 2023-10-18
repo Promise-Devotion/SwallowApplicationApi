@@ -1,4 +1,7 @@
 
+using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
+
 namespace SwallowApplicationApi
 {
     public class Program
@@ -9,7 +12,12 @@ namespace SwallowApplicationApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddNewtonsoftJson((options) => {
+                // 设置返回字段和实体中字段名字大小写保持一致
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                // 日期格式
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
