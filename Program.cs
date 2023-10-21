@@ -1,5 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Serialization;
+using SwallowApplicationApi.Models;
 using System.Text.Json.Serialization.Metadata;
 
 namespace SwallowApplicationApi
@@ -21,6 +23,7 @@ namespace SwallowApplicationApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<CoreDbContext>(x => x.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
