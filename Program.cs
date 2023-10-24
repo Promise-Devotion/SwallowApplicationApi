@@ -14,7 +14,8 @@ namespace SwallowApplicationApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers().AddNewtonsoftJson((options) => {
+            builder.Services.AddControllers().AddNewtonsoftJson((options) =>
+            {
                 // 设置返回字段和实体中字段名字大小写保持一致
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 // 日期格式
@@ -23,7 +24,7 @@ namespace SwallowApplicationApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<CoreDbContext>(x => x.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<CoreDbContext>(DbContextOptionsBuilder => DbContextOptionsBuilder.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")!));
 
             var app = builder.Build();
 

@@ -7,6 +7,10 @@ namespace SwallowApplicationApi.Controllers
 {
     [Route("api/[controller]/GetBillList")]
     [ApiController]
+
+    /// <summary>
+    /// Bill模块控制器
+    /// </summary>
     public class BillController : ControllerBase
     {
         private readonly CoreDbContext _coreDbContext;

@@ -5,7 +5,7 @@ using System.Configuration;
 
 namespace SwallowApplicationApi.Models
 {
-    public class CoreDbContext: DbContext
+    public class CoreDbContext : DbContext
     {
         public virtual DbSet<UserModel> User { get; set; } //创建实体类添加Context中
         public virtual DbSet<BillModel> Bills { get; set; }
